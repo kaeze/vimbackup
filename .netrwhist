@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/home/kyle/enr/sanjay/ENRU/SST/0223/SST2-power off/htclog'
+let g:netrw_dirhist_2='/home/kyle/proj/ics/kernel/drivers/bluetooth'
+let g:netrw_dirhist_3='/home/kyle/enr/log/20120122'
+let g:netrw_dirhist_4='/home/kyle/.vim/syntax'

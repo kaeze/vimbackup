@@ -4,7 +4,6 @@
 
 " read https://github.com/vgod/vimrc/blob/master/README.md for more info
 
-
 " For pathogen.vim: auto load all plugins in .vim/bundle
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
@@ -35,10 +34,10 @@ if has("gui_running")	" GUI color and font settings
   set background=dark 
   set t_Co=256          " 256 color mode
   set cursorline        " highlight current line
-  colors moria
+  colors icansee
 else
 " terminal color settings
-  colors vgod
+  colors icansee 
 endif
 
 set clipboard=unnamed	" yank to the system register (*) by default
@@ -50,12 +49,13 @@ set wildmenu            " wild char completion menu
 " ignore these files while expanding wild chars
 set wildignore=*.o,*.class,*.pyc
 
+set tabstop=4
 set autoindent		" auto indentation
 set incsearch		" incremental search
 set nobackup		" no *~ backup files
 set copyindent		" copy the previous indentation on autoindenting
-set ignorecase		" ignore case when searching
-set smartcase		" ignore case if search pattern is all lowercase,case-sensitive otherwise
+"set ignorecase		" ignore case when searching
+"set smartcase		" ignore case if search pattern is all lowercase,case-sensitive otherwise
 set smarttab		" insert tabs on the start of a line according to context
 
 " disable sound on errors
@@ -63,18 +63,20 @@ set noerrorbells
 set novisualbell
 set t_vb=
 set tm=500
+"set t_ti= t_te=
 
 " TAB setting{
    set expandtab        "replace <TAB> with spaces
-   set softtabstop=3 
-   set shiftwidth=3 
+   set softtabstop=4 
+   set shiftwidth=4 
 
    au FileType Makefile set noexpandtab
 "}      							
 
 " status line {
 set laststatus=2
-set statusline=\ %{HasPaste()}%<%-15.25(%f%)%m%r%h\ %w\ \ 
+set statusline=%{GitBranch()}
+set statusline+=\ %{HasPaste()}%<%-15.25(%f%)%m%r%h\ %w\ \ 
 set statusline+=\ \ \ [%{&ff}/%Y] 
 set statusline+=\ \ \ %<%20.30(%{hostname()}:%{CurDir()}%)\ 
 set statusline+=%=%-10.(%l,%c%V%)\ %p%%/%L
@@ -145,9 +147,11 @@ set wmh=0                     " set the min height of a window to 0 so we can ma
 " move around tabs. conflict with the original screen top/bottom
 " comment them out if you want the original H/L
 " go to prev tab 
-map <S-H> gT
+"map <S-H> gT
+map <C-h> gT
 " go to next tab
-map <S-L> gt
+"map <S-L> gt
+map <C-l> gt
 
 " new tab
 map <C-t><C-t> :tabnew<CR>
@@ -278,7 +282,7 @@ let g:tex_flavor='latex'
 " --- AutoClose - Inserts matching bracket, paren, brace or quote 
 " fixed the arrow key problems caused by AutoClose
 if !has("gui_running")	
-   set term=linux
+   set term=xterm
    imap OA <ESC>ki
    imap OB <ESC>ji
    imap OC <ESC>li
@@ -297,3 +301,29 @@ let g:CommandTMaxHeight = 15
 
 " --- SuperTab
 let g:SuperTabDefaultCompletionType = "context"
+
+" add By Kyle
+let Tlist_Ctags_Cmd = 'ctags'
+nnoremap <F2> :NERDTree<CR>
+nnoremap <F12>  :TlistToggle<CR>
+nmap <leader>G   :ToggleGitMenu<CR>
+nnoremap <silent> <F5> :NERDTree<CR>
+set cursorline
+if has("cscope")
+    set csprg=/usr/bin/cscope
+    set csto=0
+    set cst
+    set nocsverb
+    " add any database in current directory
+    if filereadable("cscope.out")
+        cs add cscope.out
+        " else add database pointed to by environment
+    elseif $CSCOPE_DB != ""
+        cs add $CSCOPE_DB
+    endif
+    set csverb
+endif
+
+set encoding=utf-8
+set fileencoding=utf-8
+set fileencodings=utf-8,gbk,ucs-bom,cp936
