@@ -5,6 +5,12 @@
 " read https://github.com/vgod/vimrc/blob/master/README.md for more info
 
 " For pathogen.vim: auto load all plugins in .vim/bundle
+
+let g:pathogen_disabled = []
+if !has('gui_running')
+   call add(g:pathogen_disabled, 'powerline')
+endif
+
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
@@ -230,6 +236,7 @@ if has("autocmd") && exists("+omnifunc")
               \	endif
 endif
 
+set cot-=preview "disable doc preview in omnicomplete
 
 " make CSS omnicompletion work for SASS and SCSS
 autocmd BufNewFile,BufRead *.scss             set ft=scss.css
@@ -241,7 +248,7 @@ autocmd BufNewFile,BufRead *.sass             set ft=sass.css
 set encoding=utf-8                                  
 set termencoding=utf-8
 set fileencoding=utf-8
-set fileencodings=ucs-bom,utf-8,big5,latin1
+set fileencodings=ucs-bom,utf-8,big5,gb2312,latin1
 
 fun! ViewUTF8()
 	set encoding=utf-8                                  
@@ -264,6 +271,7 @@ endfun
 "--------------------------------------------------------------------------- 
 " PLUGIN SETTINGS
 "--------------------------------------------------------------------------- 
+
 
 " ------- vim-latex - many latex shortcuts and snippets {
 
