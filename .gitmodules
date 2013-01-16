@@ -67,3 +67,6 @@
 [submodule "bundle/vimplugin"]
 	path = bundle/vimplugin
 	url = git://github.com/kaeze/vimpluin.git
+[submodule "bundle/git-vim"]
+	path = bundle/git-vim
+	url = git://github.com/motemen/git-vim.git
