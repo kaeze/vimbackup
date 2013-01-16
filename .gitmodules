@@ -64,9 +64,9 @@
 [submodule "bundle/vim-javascript"]
 	path = bundle/vim-javascript
 	url = https://github.com/pangloss/vim-javascript.git
-[submodule "bundle/vimplugin"]
-	path = bundle/vimplugin
-	url = git://github.com/kaeze/vimpluin.git
 [submodule "bundle/git-vim"]
 	path = bundle/git-vim
 	url = git://github.com/motemen/git-vim.git
+[submodule "bundle/vimplugin"]
+	path = bundle/vimplugin
+	url = git://github.com/kaeze/vimplugin.git
