@@ -1,20 +1,34 @@
-" vgod's vimrc
-" Tsung-Hsiang (Sean) Chang <vgod@vgod.tw>
-" Fork me on GITHUB  https://github.com/vgod/vimrc
+set nocompatible " be iMproved
+filetype off " required!
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc() " "
 
-" read https://github.com/vgod/vimrc/blob/master/README.md for more info
+Bundle 'https://github.com/Twinside/vim-cuteErrorMarker.git'
+Bundle 'https://github.com/vim-scripts/OmniCppComplete.git'
+Bundle 'https://github.com/vim-scripts/VisIncr.git'
+Bundle 'https://github.com/Townk/vim-autoclose.git'
+Bundle 'https://github.com/wincent/Command-T.git'
+Bundle 'git://github.com/Lokaltog/vim-easymotion.git'
+Bundle 'git://github.com/motemen/git-vim.git'
+Bundle 'https://github.com/vim-scripts/javacomplete'
+Bundle 'https://github.com/vim-scripts/matchit.zip.git'
+Bundle 'https://github.com/scrooloose/nerdcommenter.git'
+Bundle 'https://github.com/Lokaltog/vim-powerline.git'
+Bundle 'https://github.com/vim-scripts/pythoncomplete.git'
+Bundle 'https://github.com/vgod/scala-vim-support.git'
+Bundle 'https://github.com/msanders/snipmate.vim.git'
+Bundle 'https://github.com/ervandew/supertab.git'
+Bundle 'https://github.com/tpope/vim-surround.git'
+Bundle 'git://github.com/majutsushi/tagbar'
+Bundle 'https://github.com/pangloss/vim-javascript.git'
+Bundle 'git://github.com/kaeze/vimplugin.git'
+Bundle 'https://github.com/sukima/xmledit.git'
+Bundle 'https://github.com/vim-scripts/YankRing.vim.git'
 
-" For pathogen.vim: auto load all plugins in .vim/bundle
 
-let g:pathogen_disabled = []
-if !has('gui_running')
-   call add(g:pathogen_disabled, 'powerline')
-endif
 
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
 
-" General Settings
+filetype plugin indent on    
 
 set nocompatible	" not compatible with the old-fashion vi mode
 set bs=2		" allow backspacing over everything in insert mode
