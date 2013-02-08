@@ -24,6 +24,7 @@ Bundle 'https://github.com/pangloss/vim-javascript.git'
 Bundle 'git://github.com/kaeze/vimplugin.git'
 Bundle 'https://github.com/sukima/xmledit.git'
 Bundle 'https://github.com/vim-scripts/YankRing.vim.git'
+Bundle 'taglist.vim'
 
 
 
