@@ -26,6 +26,7 @@ Bundle 'https://github.com/sukima/xmledit.git'
 Bundle 'https://github.com/vim-scripts/YankRing.vim.git'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'taglist.vim'
+Bundle 'a.vim'
 
 
 
