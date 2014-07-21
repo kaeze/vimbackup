@@ -9,7 +9,8 @@ Bundle 'https://github.com/vim-scripts/VisIncr.git'
 Bundle 'https://github.com/Townk/vim-autoclose.git'
 Bundle 'https://github.com/wincent/Command-T.git'
 Bundle 'git://github.com/Lokaltog/vim-easymotion.git'
-Bundle 'git://github.com/motemen/git-vim.git'
+"Bundle 'git://github.com/motemen/git-vim.git'
+Bundle 'git://github.com/tpope/vim-fugitive.git'
 Bundle 'https://github.com/vim-scripts/javacomplete'
 Bundle 'https://github.com/vim-scripts/matchit.zip.git'
 Bundle 'https://github.com/scrooloose/nerdcommenter.git'
@@ -390,3 +391,4 @@ let g:snipMateAllowMatchingDot = 0
 
 " --- coffee-script
 au BufWritePost *.coffee silent CoffeeMake! -b | cwindow | redraw! " recompile coffee scripts on write
+set t_Co=256
