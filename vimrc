@@ -30,10 +30,12 @@ Bundle 'taglist.vim'
 Bundle 'a.vim'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'https://github.com/vivien/vim-linux-coding-style'
-Bundle 'itchyny/calendar.vim'
 Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Bundle 'klen/python-mode'
 Plugin 'vim-airline/vim-airline'
+Bundle 'itchyny/calendar.vim'
+Bundle 'fatih/vim-go'
+
 
 
 

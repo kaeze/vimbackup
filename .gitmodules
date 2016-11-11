@@ -1,0 +1,3 @@
+[submodule "bundle/bundle/calendar-vim"]
+	path = bundle/bundle/calendar-vim
+	url = git://github.com/mattn/calendar-vim
