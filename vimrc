@@ -34,6 +34,9 @@ Bundle 'itchyny/calendar.vim'
 Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Bundle 'klen/python-mode'
 Plugin 'vim-airline/vim-airline'
+Bundle 'itchyny/calendar.vim'
+Bundle 'fatih/vim-go'
+
 
 
 
