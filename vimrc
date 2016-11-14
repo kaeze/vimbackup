@@ -4,22 +4,15 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc() " "
 
 Bundle 'https://github.com/Twinside/vim-cuteErrorMarker.git'
-Bundle 'https://github.com/vim-scripts/OmniCppComplete.git'
-Bundle 'https://github.com/vim-scripts/VisIncr.git'
 Bundle 'https://github.com/Townk/vim-autoclose.git'
 Bundle 'https://github.com/wincent/Command-T.git'
 Bundle 'git://github.com/Lokaltog/vim-easymotion.git'
-"Bundle 'git://github.com/motemen/git-vim.git'
 Bundle 'git://github.com/tpope/vim-fugitive.git'
 Bundle 'https://github.com/vim-scripts/javacomplete'
 Bundle 'https://github.com/vim-scripts/matchit.zip.git'
 Bundle 'https://github.com/scrooloose/nerdcommenter.git'
-Bundle 'https://github.com/Lokaltog/vim-powerline.git'
 Bundle 'https://github.com/vim-scripts/pythoncomplete.git'
-Bundle 'https://github.com/vgod/scala-vim-support.git'
-Bundle 'https://github.com/msanders/snipmate.vim.git'
 Bundle 'https://github.com/ervandew/supertab.git'
-Bundle 'https://github.com/tpope/vim-surround.git'
 Bundle 'git://github.com/majutsushi/tagbar'
 Bundle 'https://github.com/pangloss/vim-javascript.git'
 Bundle 'git://github.com/kaeze/vimplugin.git'
@@ -30,9 +23,9 @@ Bundle 'taglist.vim'
 Bundle 'a.vim'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'https://github.com/vivien/vim-linux-coding-style'
-Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Bundle 'klen/python-mode'
 Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Bundle 'itchyny/calendar.vim'
 Bundle 'fatih/vim-go'
 
@@ -40,7 +33,7 @@ Bundle 'fatih/vim-go'
 
 
 
-filetype plugin indent on    
+filetype plugin indent on
 
 set nocompatible	" not compatible with the old-fashion vi mode
 set bs=2		" allow backspacing over everything in insert mode
@@ -107,12 +100,12 @@ set tm=500
 "}      							
 
 " status line {
-set laststatus=2
-set statusline=%{GitBranch()}
-set statusline+=\ %{HasPaste()}%<%-15.25(%f%)%m%r%h\ %w\ \ 
-set statusline+=\ \ \ [%{&ff}/%Y] 
-set statusline+=\ \ \ %<%20.30(%{hostname()}:%{CurDir()}%)\ 
-set statusline+=%=%-10.(%l,%c%V%)\ %p%%/%L
+"set laststatus=2
+"set statusline=%{GitBranch()}
+"set statusline+=\ %{HasPaste()}%<%-15.25(%f%)%m%r%h\ %w\ \ 
+"set statusline+=\ \ \ [%{&ff}/%Y] 
+"set statusline+=\ \ \ %<%20.30(%{hostname()}:%{CurDir()}%)\ 
+"set statusline+=%=%-10.(%l,%c%V%)\ %p%%/%L
 
 function! CurDir()
     let curdir = substitute(getcwd(), $HOME, "~", "")
@@ -151,8 +144,8 @@ endfun
 " USEFUL SHORTCUTS
 "--------------------------------------------------------------------------- 
 " set leader to ,
-let mapleader=","
-let g:mapleader=","
+let mapleader="'"
+let g:mapleader="'"
 
 "replace the current word in all opened buffers
 map <leader>r :call Replace()<CR>
@@ -185,6 +178,7 @@ set wmh=0                     " set the min height of a window to 0 so we can ma
 " go to next tab
 "map <S-L> gt
 "map <C-l> gt
+
 
 " new tab
 map <C-t><C-t> :tabnew<CR>
@@ -246,44 +240,22 @@ endfun
 
 
 
-" Enable omni completion. (Ctrl-X Ctrl-O)
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd FileType c set omnifunc=ccomplete#Complete
-autocmd FileType java set omnifunc=javacomplete#Complete
-
-" use syntax complete if nothing else available
-if has("autocmd") && exists("+omnifunc")
-  autocmd Filetype *
-              \	if &omnifunc == "" |
-              \		setlocal omnifunc=syntaxcomplete#Complete |
-              \	endif
-endif
-
-set cot-=preview "disable doc preview in omnicomplete
-
-" make CSS omnicompletion work for SASS and SCSS
-autocmd BufNewFile,BufRead *.scss             set ft=scss.css
-autocmd BufNewFile,BufRead *.sass             set ft=sass.css
 
 "--------------------------------------------------------------------------- 
 " ENCODING SETTINGS
 "--------------------------------------------------------------------------- 
-set encoding=utf-8                                  
+set encoding=utf-8
 set termencoding=utf-8
 set fileencoding=utf-8
 set fileencodings=ucs-bom,utf-8,big5,gb2312,latin1
 
 fun! ViewUTF8()
-	set encoding=utf-8                                  
+	set encoding=utf-8
 	set termencoding=big5
 endfun
 
 fun! UTF8()
-	set encoding=utf-8                                  
+	set encoding=utf-8
 	set termencoding=big5
 	set fileencoding=utf-8
 	set fileencodings=ucs-bom,big5,utf-8,latin1
@@ -337,22 +309,17 @@ let g:CommandTMaxHeight = 15
 " --- SuperTab
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
-let g:SuperTabContextDiscoverDiscovery = ["&completefunc:<c-x><c-u>", "&omnifunc:<c-x><c-o>"]
 
 
 " add By Kyle
-let Tlist_Ctags_Cmd = 'ctags'
-"nnoremap <leader>N :NERDTree<CR>
-nnoremap <leader>T  :TlistToggle<CR>
-nmap <leader>G   :ToggleGitMenu<CR>
-"nnoremap <silent> <F5> :NERDTree<CR>
+nnoremap <leader>T  :TagbarToggle<CR>
 set cursorline
 
 set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8,gbk,ucs-bom,cp936
-"set list
-"set lcs=tab:>-,trail:=
+set list
+set list lcs=trail:·,tab:»-
 
 let g:Tex_DefaultTargetFormat = 'pdf'
 let g:Tex_ViewRule_pdf = 'okular'
@@ -387,6 +354,7 @@ fun! KerenlSetting()
     set foldmethod=syntax " fold on braces
     let $kernel_version=system('uname -r | transition -d "\n"')""""""""""
 endfunc
+
 set nu
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 " --- PowerLine
@@ -399,3 +367,9 @@ let g:snipMateAllowMatchingDot = 0
 " --- coffee-script
 au BufWritePost *.coffee silent CoffeeMake! -b | cwindow | redraw! " recompile coffee scripts on write
 set t_Co=256
+
+" -- airline
+let g:airline_left_sep = '»'
+
+" -- tagbar
+let g:tagbar_left=1
