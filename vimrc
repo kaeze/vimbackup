@@ -12,7 +12,6 @@ Bundle 'https://github.com/vim-scripts/javacomplete'
 Bundle 'https://github.com/vim-scripts/matchit.zip.git'
 Bundle 'https://github.com/scrooloose/nerdcommenter.git'
 Bundle 'https://github.com/vim-scripts/pythoncomplete.git'
-Bundle 'https://github.com/ervandew/supertab.git'
 Bundle 'git://github.com/majutsushi/tagbar'
 Bundle 'https://github.com/pangloss/vim-javascript.git'
 Bundle 'git://github.com/kaeze/vimplugin.git'
@@ -27,10 +26,10 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Bundle 'itchyny/calendar.vim'
 Bundle 'fatih/vim-go'
-
-
-
-
+Bundle 'kien/ctrlp.vim'
+"Bundle 'https://github.com/vim-syntastic/syntastic.git'
+Bundle 'godlygeek/tabular'
+Bundle 'https://github.com/gmarik/vundle.git'
 
 filetype plugin indent on
 
@@ -79,7 +78,6 @@ set autoindent		" auto indentation
 set incsearch		" incremental search
 set nobackup		" no *~ backup files
 set copyindent		" copy the previous indentation on autoindenting
-"set ignorecase		" ignore case when searching
 "set smartcase		" ignore case if search pattern is all lowercase,case-sensitive otherwise
 set smarttab		" insert tabs on the start of a line according to context
 
@@ -99,12 +97,6 @@ set tm=500
 "}
 
 " status line {
-"set laststatus=2
-"set statusline=%{GitBranch()}
-"set statusline+=\ %{HasPaste()}%<%-15.25(%f%)%m%r%h\ %w\ \
-"set statusline+=\ \ \ [%{&ff}/%Y]
-"set statusline+=\ \ \ %<%20.30(%{hostname()}:%{CurDir()}%)\
-"set statusline+=%=%-10.(%l,%c%V%)\ %p%%/%L
 
 function! CurDir()
     let curdir = substitute(getcwd(), $HOME, "~", "")
@@ -143,8 +135,8 @@ endfun
 " USEFUL SHORTCUTS
 "---------------------------------------------------------------------------
 " set leader to ,
-let mapleader="'"
-let g:mapleader="'"
+let mapleader=","
+let g:mapleader=","
 
 "replace the current word in all opened buffers
 map <leader>r :call Replace()<CR>
@@ -305,10 +297,6 @@ endif
 " --- Command-T
 let g:CommandTMaxHeight = 15
 
-" --- SuperTab
-let g:SuperTabDefaultCompletionType = "context"
-let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
-
 
 " add By Kyle
 nnoremap <leader>T  :TagbarToggle<CR>
@@ -374,6 +362,7 @@ set laststatus=2
 " " enable powerline-fonts
 let g:airline_powerline_fonts = 1
 let g:airline_theme='zenburn'
+set guifont=Inconsolata\ for\ Powerline\ 20
 
 
 " air-line
@@ -404,3 +393,47 @@ let g:tagbar_left=1
 " -- auto remove the trailing space
 autocmd BufWritePre * %s/\s\+$//e
 
+" -- ctrlp
+let g:ctrlp_working_path_mode='ra'
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
+let g:ctrlp_open_new_file = 't'
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|pyc)$'
+let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+
+" -- ag command
+let g:ackprg = 'ag --vimgrep'
+" The Silver Searcher
+if executable('ag')
+    " Use ag over grep
+    set grepprg=ag\ --nogroup\ --nocolor
+
+    " Use ag in CtrlP for listing files. Lightning fast and respects
+    " .gitignore
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+    " ag is fast enough that CtrlP doesn't need to cache
+    let g:ctrlp_use_caching = 0
+endif
+
+"YCM
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_complete_in_comments_and_strings=1
+let g:ycm_key_list_select_completion=['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion=['<C-p>', '<Up>']
+let g:ycm_autoclose_preview_window_after_completion = 1
+
+"This assumes your kernel directory has the word 'kernel'
+if getcwd() =~ "kernel"
+    let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/vimplugin/python/ycm_extra_conf_kernel.py'
+    "let g:ycm_global_ycm_extra_conf='~/ycm_extra_conf_kernel.py'
+else
+    let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/vimplugin/python/ycm_extra_conf.py'
+    "let g:ycm_global_ycm_extra_conf='~/ycm_extra_conf.py'
+endif
+
+
+"Syntastic
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
